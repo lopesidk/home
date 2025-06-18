@@ -16,6 +16,8 @@
       align-items: center;
       flex-direction: column;
       overflow: hidden;
+      color: white;
+      font-family: Arial, sans-serif;
     }
 
     button {
@@ -48,6 +50,33 @@
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+
+    #loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 20px;
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #00f, #f0f, #f00);
+      animation: loadingAnim 3s linear forwards;
+    }
+
+    @keyframes loadingAnim {
+      0% { width: 0; }
+      100% { width: 100%; }
     }
 
     #logo {
@@ -98,6 +127,13 @@
 
   <button onclick="startSite()">Clique aqui</button>
 
+  <div id="loading">
+    <h2>Carregando...</h2>
+    <div class="progress-bar">
+      <div class="progress-bar-fill"></div>
+    </div>
+  </div>
+
   <div id="logo">
     <img src="logo.png" alt="LOPESIDK Logo">
   </div>
@@ -109,10 +145,15 @@
 
   <script>
     function startSite() {
-      document.getElementById('bgm').play();
       document.querySelector('button').style.display = 'none';
-      document.getElementById('logo').style.display = 'block';
-      document.getElementById('logo').classList.add('glitch');
+      document.getElementById('loading').style.display = 'flex';
+
+      setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('logo').style.display = 'block';
+        document.getElementById('logo').classList.add('glitch');
+        document.getElementById('bgm').play();
+      }, 3000);
     }
   </script>
 
