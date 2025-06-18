@@ -10,6 +10,7 @@
       padding: 0;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background: url('https://cdn.pixabay.com/photo/2013/07/18/20/26/starry-sky-164317_1280.jpg') no-repeat center center fixed;
@@ -21,6 +22,23 @@
       width: 90%;
       max-width: 1000px;
       height: auto;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #444;
     }
 
     @media (max-width: 600px) {
@@ -47,5 +65,12 @@
       LOPESIDK
     </text>
   </svg>
+
+  <button onclick="document.getElementById('bgm').play()">Clique aqui</button>
+
+  <audio id="bgm" loop>
+    <source src="./SpotiDown.App - Krwlng _Mike Shinoda Reanimation_ _feat. Aaron Lewis_ - Linkin Park.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
 </body>
 </html>
