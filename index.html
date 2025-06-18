@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LOPESIDK - Excision Style</title>
+  <title>LOPESIDK - Excision Glitch</title>
   <style>
     body {
       margin: 0;
@@ -27,8 +27,6 @@
       border-radius: 10px;
       cursor: pointer;
       position: relative;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      background-clip: padding-box;
     }
 
     button::before {
@@ -58,28 +56,40 @@
     }
 
     #logo img {
-      width: 90%;
       max-width: 600px;
+      width: 90%;
+      position: relative;
     }
 
-    /* Glitch effect on image */
+    /* Glitch RGB Split */
     #logo.glitch img {
-      animation: glitchImage 1s infinite;
+      animation: glitchRGB 0.8s infinite;
     }
 
-    @keyframes glitchImage {
-      0% { transform: translate(0, 0); filter: hue-rotate(0deg); }
-      20% { transform: translate(-2px, 2px); filter: hue-rotate(15deg); }
-      40% { transform: translate(2px, -2px); filter: hue-rotate(-15deg); }
-      60% { transform: translate(-1px, 1px); filter: hue-rotate(10deg); }
-      80% { transform: translate(1px, -1px); filter: hue-rotate(-10deg); }
-      100% { transform: translate(0, 0); filter: hue-rotate(0deg); }
-    }
-
-    @media (max-width: 600px) {
-      button {
-        font-size: 16px;
-        padding: 12px 24px;
+    @keyframes glitchRGB {
+      0% {
+        filter: drop-shadow(-2px 0 red) drop-shadow(2px 0 blue);
+        transform: translate(0, 0);
+      }
+      20% {
+        filter: drop-shadow(-4px 0 red) drop-shadow(4px 0 blue);
+        transform: translate(2px, -1px);
+      }
+      40% {
+        filter: drop-shadow(4px 0 red) drop-shadow(-4px 0 blue);
+        transform: translate(-2px, 1px);
+      }
+      60% {
+        filter: drop-shadow(-2px 0 red) drop-shadow(2px 0 blue);
+        transform: translate(1px, -2px);
+      }
+      80% {
+        filter: drop-shadow(2px 0 red) drop-shadow(-2px 0 blue);
+        transform: translate(-1px, 2px);
+      }
+      100% {
+        filter: drop-shadow(-2px 0 red) drop-shadow(2px 0 blue);
+        transform: translate(0, 0);
       }
     }
   </style>
@@ -101,9 +111,8 @@
     function startSite() {
       document.getElementById('bgm').play();
       document.querySelector('button').style.display = 'none';
-      const logo = document.getElementById('logo');
-      logo.style.display = 'block';
-      logo.classList.add('glitch');
+      document.getElementById('logo').style.display = 'block';
+      document.getElementById('logo').classList.add('glitch');
     }
   </script>
 
