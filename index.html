@@ -10,24 +10,24 @@
       padding: 0;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       background: url('https://cdn.pixabay.com/photo/2013/07/18/20/26/starry-sky-164317_1280.jpg') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
+      flex-direction: column;
     }
 
-    svg {
+    #logo {
+      display: none;
       width: 90%;
       max-width: 1000px;
       height: auto;
     }
 
-    button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 16px;
+    #startButton {
+      padding: 14px 28px;
+      font-size: 18px;
       background-color: #222;
       color: white;
       border: none;
@@ -37,11 +37,15 @@
       transition: background 0.3s;
     }
 
-    button:hover {
+    #startButton:hover {
       background-color: #444;
     }
 
     @media (max-width: 600px) {
+      #startButton {
+        font-size: 16px;
+        padding: 12px 24px;
+      }
       svg {
         width: 95%;
       }
@@ -49,28 +53,38 @@
   </style>
 </head>
 <body>
-  <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" style="stop-color:#000000; stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#333333; stop-opacity:1" />
-      </linearGradient>
-      <filter id="roughEdges">
-        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="turbulence"/>
-        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="5" xChannelSelector="R" yChannelSelector="G"/>
-      </filter>
-    </defs>
-    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-          font-family="Impact, sans-serif" font-size="80" fill="url(#grad)" stroke="white" stroke-width="2" filter="url(#roughEdges)" letter-spacing="10">
-      LOPESIDK
-    </text>
-  </svg>
+  <button id="startButton" onclick="startSite()">Clique aqui</button>
 
-  <button onclick="document.getElementById('bgm').play()">Clique aqui</button>
+  <div id="logo">
+    <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#000000; stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#333333; stop-opacity:1" />
+        </linearGradient>
+        <filter id="roughEdges">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="turbulence"/>
+          <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+            font-family="Impact, sans-serif" font-size="80" fill="url(#grad)" stroke="white" stroke-width="2" filter="url(#roughEdges)" letter-spacing="10">
+        LOPESIDK
+      </text>
+    </svg>
+  </div>
 
   <audio id="bgm" loop>
     <source src="./SpotiDown.App - Krwlng _Mike Shinoda Reanimation_ _feat. Aaron Lewis_ - Linkin Park.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
+
+  <script>
+    function startSite() {
+      document.getElementById('bgm').play();
+      document.getElementById('startButton').style.display = 'none';
+      document.getElementById('logo').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
