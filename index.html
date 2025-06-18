@@ -9,13 +9,13 @@
       margin: 0;
       padding: 0;
       height: 100vh;
+      background: url('https://cdn.pixabay.com/photo/2013/07/18/20/26/starry-sky-164317_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: url('https://cdn.pixabay.com/photo/2013/07/18/20/26/starry-sky-164317_1280.jpg') no-repeat center center fixed;
-      background-size: cover;
-      overflow: hidden;
       flex-direction: column;
+      overflow: hidden;
     }
 
     #logo {
@@ -25,7 +25,7 @@
       height: auto;
     }
 
-    #startButton {
+    button {
       padding: 14px 28px;
       font-size: 18px;
       background-color: #222;
@@ -37,12 +37,12 @@
       transition: background 0.3s;
     }
 
-    #startButton:hover {
+    button:hover {
       background-color: #444;
     }
 
     @media (max-width: 600px) {
-      #startButton {
+      button {
         font-size: 16px;
         padding: 12px 24px;
       }
@@ -53,7 +53,8 @@
   </style>
 </head>
 <body>
-  <button id="startButton" onclick="startSite()">Clique aqui</button>
+
+  <button onclick="startSite()">Clique aqui</button>
 
   <div id="logo">
     <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
@@ -68,23 +69,25 @@
         </filter>
       </defs>
       <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-            font-family="Impact, sans-serif" font-size="80" fill="url(#grad)" stroke="white" stroke-width="2" filter="url(#roughEdges)" letter-spacing="10">
+            font-family="Impact, sans-serif" font-size="80" fill="url(#grad)" stroke="white"
+            stroke-width="2" filter="url(#roughEdges)" letter-spacing="10">
         LOPESIDK
       </text>
     </svg>
   </div>
 
   <audio id="bgm" loop>
-    <source src="./SpotiDown.App - Krwlng _Mike Shinoda Reanimation_ _feat. Aaron Lewis_ - Linkin Park.mp3" type="audio/mpeg">
+    <source src="musica.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
   <script>
     function startSite() {
       document.getElementById('bgm').play();
-      document.getElementById('startButton').style.display = 'none';
+      document.querySelector('button').style.display = 'none';
       document.getElementById('logo').style.display = 'block';
     }
   </script>
+
 </body>
 </html>
