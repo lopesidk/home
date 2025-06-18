@@ -12,33 +12,40 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background: url('https://cdn.pixabay.com/photo/2013/07/18/20/26/starry-sky-164317_1280.jpg') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
     }
 
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      color: black;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-      font-size: 8vw;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, #000, #333);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 10px black);
+    svg {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 12vw;
+      svg {
+        width: 95%;
       }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>LOPESIDK</h1>
+  <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#000000; stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#333333; stop-opacity:1" />
+      </linearGradient>
+      <filter id="roughEdges">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="turbulence"/>
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+          font-family="Impact, sans-serif" font-size="80" fill="url(#grad)" stroke="white" stroke-width="2" filter="url(#roughEdges)" letter-spacing="10">
+      LOPESIDK
+    </text>
+  </svg>
 </body>
 </html>
